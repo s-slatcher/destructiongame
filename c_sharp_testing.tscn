@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://bempia0gnhpo5"]
+
+[ext_resource type="Script" uid="uid://cr4vvm7x80aus" path="res://CSharpTesting.cs" id="1_5e30u"]
+
+[node name="CSharpTesting" type="Node2D"]
+script = ExtResource("1_5e30u")
+
+[node name="add_button" type="Button" parent="."]
+offset_left = 393.0
+offset_top = 129.0
+offset_right = 546.0
+offset_bottom = 160.0
+text = "increase godot bot"
+
+[node name="guys_counter" type="RichTextLabel" parent="."]
+offset_left = 382.0
+offset_top = 24.0
+offset_right = 583.0
+offset_bottom = 60.0
+text = "Guys Counter: "
+
+[node name="error_label" type="RichTextLabel" parent="."]
+offset_left = 377.0
+offset_top = 55.0
+offset_right = 683.0
+offset_bottom = 109.0
+text = " "
+
+[node name="purchase_passive" type="Button" parent="."]
+offset_left = 377.0
+offset_top = 174.0
+offset_right = 551.0
+offset_bottom = 205.0
+text = "-10 guys  ->  +1 guys/s"
+
+[connection signal="pressed" from="add_button" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="purchase_passive" to="." method="_on_purchase_passive_pressed"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="destructiongame"
-run/main_scene="uid://dmco250e0fehi"
+run/main_scene="uid://bempia0gnhpo5"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
