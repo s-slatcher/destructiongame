@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2o55758viwrp"]
+
+[ext_resource type="Texture2D" uid="uid://84f50s3whljc" path="res://assets/basic_enemy.png" id="1_fng3e"]
+[ext_resource type="Script" uid="uid://bgqqce076a74h" path="res://scenes/basic_enemy/BasicEnemy.cs" id="1_gxg7h"]
+
+[node name="BasicEnemy" type="CharacterBody2D" groups=["EnemyGroup"]]
+collision_layer = 0
+script = ExtResource("1_gxg7h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fng3e")

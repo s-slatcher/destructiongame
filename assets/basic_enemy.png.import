@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk0dqvwidsxxs"
-path="res://.godot/imported/tilemap_packed.png-24ef1b4401ac68e5f7983527e3406c93.ctex"
+uid="uid://84f50s3whljc"
+path="res://.godot/imported/basic_enemy.png-5cb9854519462c30249bf2bf207a5d8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://kenny_dungeon/Tilemap/tilemap_packed.png"
-dest_files=["res://.godot/imported/tilemap_packed.png-24ef1b4401ac68e5f7983527e3406c93.ctex"]
+source_file="res://assets/basic_enemy.png"
+dest_files=["res://.godot/imported/basic_enemy.png-5cb9854519462c30249bf2bf207a5d8d.ctex"]
 
 [params]
 

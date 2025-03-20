@@ -3,9 +3,14 @@ using System;
 
 public partial class Main : Node2D
 {
-	// Called when the node enters the scene tree for the first time.
+	[Export]
+	public Player player;
+	public PackedScene Enemy = GD.Load<PackedScene>("uid://d2o55758viwrp");
+	// public PackedScene Player = GD.Load<PackedScene>("uid://ewicnjlkuawb");
+
 	public override void _Ready()
 	{
+		SpawnEnemy();
 		GD.Print("Hello world");
 	}
 
@@ -14,6 +19,14 @@ public partial class Main : Node2D
 	{
 	}
 
+
+	private void SpawnEnemy()
+	{
+		var enemy1 = Enemy.Instantiate();
+		// enemy1.TargetPlayer = player;
+		// enemy1.GlobalPosition = Vector2.Zero;
+		AddChild(enemy1);
+	}
 	private void _on_button_pressed()
 	{
 		GD.Print("Button pressed");
