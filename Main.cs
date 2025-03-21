@@ -10,7 +10,11 @@ public partial class Main : Node2D
 
 	public override void _Ready()
 	{
-		SpawnEnemy();
+		// foreach (var item in new Array[15])
+		// {
+		// 	SpawnEnemy(new Vector2(GD.RandRange(0, 1000), 0 ) );
+		// }
+		
 		GD.Print("Hello world");
 	}
 
@@ -20,9 +24,11 @@ public partial class Main : Node2D
 	}
 
 
-	private void SpawnEnemy()
+    private void SpawnEnemy(Vector2 position)
 	{
-		var enemy1 = Enemy.Instantiate();
+		var enemy1 = Enemy.Instantiate() as BasicEnemy;
+		enemy1.GlobalPosition = position;
+		// enemy1.MaxSpeed = GD.RandRange(40 , 100);
 		// enemy1.TargetPlayer = player;
 		// enemy1.GlobalPosition = Vector2.Zero;
 		AddChild(enemy1);
