@@ -28,9 +28,10 @@ public partial class SwordAbilityController : Node
 
 	public void OnTimerTimeout()
 	{
+		GetNode<Timer>("Timer").Start(1.5f);
 		var player = GetTree().GetNodesInGroup("PlayerGroup")[0] as Player;
 		var enemies = GetTree().GetNodesInGroup("EnemyGroup");
-
+		GD.Print("Swung sword");
 		List<Node2D> inRangeList = [];
 		foreach (var item in enemies.Cast<Node2D>())
 		{
@@ -53,13 +54,12 @@ public partial class SwordAbilityController : Node
 		sword.Scale = new Vector2(Math.Sign(swordDirection.Dot(Vector2.Up)) , Math.Sign(swordDirection.Dot(Vector2.Up)));
 		swordAngle = Math.Atan2(swordDirection.Y * sword.Scale.Y, swordDirection.X * sword.Scale.X);
 		
-		GD.Print(swordAngle, swordDirection);
 		sword.Rotation = (float)swordAngle;
 		player.GetParent().AddChild(sword);
 
 		
 		
-		GetNode<Timer>("Timer").Start(1.5f);
+		
 	}
 
 
