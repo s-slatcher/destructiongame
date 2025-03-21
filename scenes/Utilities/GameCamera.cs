@@ -19,7 +19,7 @@ public partial class GameCamera : Camera2D
 	public override void _PhysicsProcess(double delta)
 	{
 		TargetPos = Player.GlobalPosition;
-		GlobalPosition = GlobalPosition.Lerp(TargetPos, (float)(1.0 - Math.Exp(-delta * 10)) );
+		GlobalPosition = GlobalPosition.Lerp(TargetPos, (float)(1.0 - Math.Exp(-delta * 20)) );
 	}
 
 	

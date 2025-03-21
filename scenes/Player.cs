@@ -4,15 +4,17 @@ using System;
 public partial class Player : CharacterBody2D
 {
 	[Export]
-	public float MoveSpeed = 200f;
+	public float MaxSpeed = 90f;
+	public float AccelSmoothing = 15f;
 	public override void _Ready() 
 	{
-		GD.Print(MoveSpeed);
 	}
 	public override void _PhysicsProcess(double delta)
 	{
-		Velocity = GetMoveVector() * MoveSpeed;
+		var targetVelocity = GetMoveVector() * MaxSpeed;
+		Velocity = Velocity.Lerp(targetVelocity, (float)(1.0 - Math.Exp(-delta * AccelSmoothing)));
 		MoveAndSlide();
+		GD.Print(Velocity.Length());
 	}
 
 	private static Vector2 GetMoveVector()
