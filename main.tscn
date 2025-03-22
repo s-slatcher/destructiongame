@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://dmco250e0fehi"]
+[gd_scene load_steps=10 format=4 uid="uid://dmco250e0fehi"]
 
 [ext_resource type="Script" uid="uid://gr3rhjda86hu" path="res://Main.cs" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://ewicnjlkuawb" path="res://scenes/player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c471gwosopwfy" path="res://scenes/UI/arena_time_ui.tscn" id="2_7mycd"]
+[ext_resource type="PackedScene" uid="uid://db3juyn5axxe7" path="res://scenes/manager/arena_time_manager.tscn" id="2_272bh"]
 [ext_resource type="Texture2D" uid="uid://bk0dqvwidsxxs" path="res://assets/tilemap_packed.png" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://buckxd176cjlm" path="res://scenes/Utilities/game_camera.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bym5q7asuxq0s" path="res://scenes/manager/enemy_manager.tscn" id="5_lquwl"]
@@ -53,6 +55,11 @@ sources/0 = SubResource("TileSetAtlasSource_k764t")
 [node name="Main" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_ig7tw")
 player = NodePath("Player")
+
+[node name="ArenaTimeManager" parent="." instance=ExtResource("2_272bh")]
+
+[node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("ArenaTimeManager") instance=ExtResource("2_7mycd")]
+ArenaTimeManager = NodePath("../ArenaTimeManager")
 
 [node name="EnemyManager" parent="." instance=ExtResource("5_lquwl")]
 

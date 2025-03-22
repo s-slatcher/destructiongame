@@ -14,7 +14,6 @@ public partial class Player : CharacterBody2D
 		var targetVelocity = GetMoveVector() * MaxSpeed;
 		Velocity = Velocity.Lerp(targetVelocity, (float)(1.0 - Math.Exp(-delta * AccelSmoothing)));
 		MoveAndSlide();
-		GD.Print(Velocity.Length());
 	}
 
 	private static Vector2 GetMoveVector()

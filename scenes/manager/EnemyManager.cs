@@ -20,7 +20,6 @@ public partial class EnemyManager : Node
 		if (player == null) return;
 
 		var screenWidth = GetViewport().GetWindow().Size;
-		GD.Print(screenWidth);
 		Vector2 spawnDir = Vector2.Right.Rotated((float)GD.RandRange(0, Math.Tau));
 		Vector2 spawnPos = player.GlobalPosition + spawnDir * (screenWidth.X/2);
 

@@ -17,7 +17,6 @@ public partial class IconFalling : Node2D
 		RotationSpeed *= Math.Sign(Velocity.X);
 
 		icon = GetNode<Sprite2D>("Icon");
-		GD.Print(icon.Scale);
 		icon.Scale = new Vector2(0f, 0f);
 		tween = CreateTween();
 		tween.SetTrans(Tween.TransitionType.Elastic);

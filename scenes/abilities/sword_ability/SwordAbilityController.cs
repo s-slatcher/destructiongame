@@ -31,7 +31,6 @@ public partial class SwordAbilityController : Node
 		GetNode<Timer>("Timer").Start(1.5f);
 		var player = GetTree().GetNodesInGroup("PlayerGroup")[0] as Player;
 		var enemies = GetTree().GetNodesInGroup("EnemyGroup");
-		GD.Print("Swung sword");
 		List<Node2D> inRangeList = [];
 		foreach (var item in enemies.Cast<Node2D>())
 		{
