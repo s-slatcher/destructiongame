@@ -9,6 +9,7 @@ public partial class ArenaTimeUi : CanvasLayer
     public override void _Process(double delta)
     {
         var timeElapsed = ArenaTimeManager.GetTimeElapsed();
-        GetChild(0).GetChild<Label>(0).Text = Math.Floor(timeElapsed).ToString();
+        var timeElapsedString = Math.Floor(timeElapsed).ToString();
+        GetChild(0).GetChild<Label>(0).Text = "Time Left: " + timeElapsedString;
     }
 }

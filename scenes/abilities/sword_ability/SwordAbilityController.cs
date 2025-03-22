@@ -46,18 +46,9 @@ public partial class SwordAbilityController : Node
 		
 		var sword = swordAbility.Instantiate() as SwordAbility;
 		var enemyPosition = inRangeList[0].GlobalPosition;
-		var swordDirection = enemyPosition - player.GlobalPosition;
-		sword.GlobalPosition = swordDirection.Normalized() * -1.0f * 10f + enemyPosition;
-		double swordAngle = Math.Atan2(swordDirection.Y, swordDirection.X);
-		
-		sword.Scale = new Vector2(Math.Sign(swordDirection.Dot(Vector2.Up)) , Math.Sign(swordDirection.Dot(Vector2.Up)));
-		swordAngle = Math.Atan2(swordDirection.Y * sword.Scale.Y, swordDirection.X * sword.Scale.X);
-		
-		sword.Rotation = (float)swordAngle;
-		player.GetParent().AddChild(sword);
 
-		
-		
+		sword.TargetEnemy = inRangeList[0];		
+		player.GetParent().AddChild(sword);
 		
 	}
 
