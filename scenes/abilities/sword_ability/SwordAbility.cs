@@ -8,9 +8,11 @@ using Vector2 = Godot.Vector2;
 public partial class SwordAbility : Node2D
 {
 	public Node2D TargetEnemy;
-	public Vector2 TargetPosition;
+	public Vector2 TargetPosition = new Vector2(0, 0);
 	public Vector2 OffsetDirection;
-	public const int OFFSET_PIXELS = 16;
+	private double MaxOffset = 25;
+	private double CurrentOffset = 25;
+	private double maxSpeed = 64;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -19,14 +21,21 @@ public partial class SwordAbility : Node2D
 		var animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationPlayer.Play("swing");
 		animationPlayer.AnimationFinished += str => QueueFree();
+		
 	}
 
     public override void _PhysicsProcess(double delta)
     {
-		if (TargetEnemy == null ) return;
-		if (TargetEnemy.IsQueuedForDeletion()) TargetEnemy = null;
-        GlobalPosition = TargetEnemy.GlobalPosition + (OFFSET_PIXELS * OffsetDirection );
-		LookAt(TargetEnemy.GlobalPosition);
+		if (IsInstanceValid(TargetEnemy)) TargetPosition = TargetEnemy.GlobalPosition;
+		
+		var offsetRatio = MaxOffset / CurrentOffset;
+		var speed = maxSpeed * Math.Pow( offsetRatio, 2 );
+		CurrentOffset = Math.Clamp(CurrentOffset - speed * delta, 0 ,99);
+		
+
+		
+        GlobalPosition = TargetPosition + ((float)CurrentOffset * OffsetDirection );
+		LookAt(TargetPosition);
     }
 
 

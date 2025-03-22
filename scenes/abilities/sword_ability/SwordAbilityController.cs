@@ -14,7 +14,7 @@ public partial class SwordAbilityController : Node
 	PackedScene swordAbility;
 
 	[Export]
-	public float MaxRange = 300f;
+	public float MaxRange = 125f;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{

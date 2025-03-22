@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=4 uid="uid://dmco250e0fehi"]
+[gd_scene load_steps=12 format=4 uid="uid://dmco250e0fehi"]
 
 [ext_resource type="Script" uid="uid://gr3rhjda86hu" path="res://Main.cs" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://ewicnjlkuawb" path="res://scenes/player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ewicnjlkuawb" path="res://scenes/game_objects/player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c471gwosopwfy" path="res://scenes/UI/arena_time_ui.tscn" id="2_7mycd"]
 [ext_resource type="PackedScene" uid="uid://db3juyn5axxe7" path="res://scenes/manager/arena_time_manager.tscn" id="2_272bh"]
 [ext_resource type="Texture2D" uid="uid://bk0dqvwidsxxs" path="res://assets/tilemap_packed.png" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://buckxd176cjlm" path="res://scenes/Utilities/game_camera.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://buckxd176cjlm" path="res://scenes/utilities/game_camera.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bym5q7asuxq0s" path="res://scenes/manager/enemy_manager.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://b8l0f8syjf16s" path="res://scenes/game_objects/experience_vial.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://dl5gtrv4v4c8k" path="res://scenes/manager/experience_manager.tscn" id="8_kek77"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k764t"]
 texture = ExtResource("2_h2yge")
@@ -58,6 +60,8 @@ player = NodePath("Player")
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("2_272bh")]
 
+[node name="ExperienceManager" parent="." instance=ExtResource("8_kek77")]
+
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("ArenaTimeManager") instance=ExtResource("2_7mycd")]
 ArenaTimeManager = NodePath("../ArenaTimeManager")
 
@@ -72,3 +76,6 @@ position = Vector2(315, 160)
 
 [node name="GameCamera" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("4_1bvp3")]
 Player = NodePath("../Player")
+
+[node name="ExperienceVial" parent="." instance=ExtResource("8_5vw27")]
+position = Vector2(317, 202)

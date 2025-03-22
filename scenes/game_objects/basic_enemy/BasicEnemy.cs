@@ -3,6 +3,9 @@ using System;
 
 public partial class BasicEnemy : CharacterBody2D
 {
+
+	[Export] PackedScene ExperienceVialScene;
+
 	private Player target;
 
     public float MaxSpeed {get; set;} = 60f;
@@ -18,9 +21,17 @@ public partial class BasicEnemy : CharacterBody2D
 
     private void OnCollisionDetected(Area2D area)
     {
+		
+		CallDeferred("SpawnExperienceVial");
 		QueueFree();
     }
 
+	private void SpawnExperienceVial()
+	{
+		var _xpVial = ExperienceVialScene.Instantiate() as ExperienceVial;
+		_xpVial.GlobalPosition = GlobalPosition;
+		GetParent().AddChild( _xpVial );
+	}
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{

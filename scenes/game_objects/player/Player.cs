@@ -3,7 +3,7 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-	[Export]
+	
 	public float MaxSpeed = 90f;
 	public float AccelSmoothing = 15f;
 	public override void _Ready() 

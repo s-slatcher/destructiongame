@@ -6,6 +6,7 @@ public partial class EnemyManager : Node
 
 	[Export]
 	public PackedScene BasicEnemyScene;
+	
 	public override void _Ready()
 	{
 	

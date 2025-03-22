@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2o55758viwrp"]
+[gd_scene load_steps=6 format=3 uid="uid://d2o55758viwrp"]
 
 [ext_resource type="Texture2D" uid="uid://84f50s3whljc" path="res://assets/basic_enemy.png" id="1_fng3e"]
-[ext_resource type="Script" uid="uid://bgqqce076a74h" path="res://scenes/basic_enemy/BasicEnemy.cs" id="1_gxg7h"]
+[ext_resource type="Script" uid="uid://bgqqce076a74h" path="res://scenes/game_objects/basic_enemy/BasicEnemy.cs" id="1_gxg7h"]
+[ext_resource type="PackedScene" uid="uid://b8l0f8syjf16s" path="res://scenes/game_objects/experience_vial.tscn" id="2_o35dm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gxg7h"]
 radius = 5.0
@@ -14,6 +15,7 @@ collision_layer = 12
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_gxg7h")
+ExperienceVialScene = ExtResource("2_o35dm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -4)
