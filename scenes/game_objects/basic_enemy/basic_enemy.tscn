@@ -1,20 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2o55758viwrp"]
+[gd_scene load_steps=9 format=3 uid="uid://d2o55758viwrp"]
 
 [ext_resource type="Texture2D" uid="uid://84f50s3whljc" path="res://assets/basic_enemy.png" id="1_fng3e"]
 [ext_resource type="Script" uid="uid://bgqqce076a74h" path="res://scenes/game_objects/basic_enemy/BasicEnemy.cs" id="1_gxg7h"]
 [ext_resource type="PackedScene" uid="uid://b8l0f8syjf16s" path="res://scenes/game_objects/experience_vial.tscn" id="2_o35dm"]
+[ext_resource type="PackedScene" uid="uid://dsn2dgk0m7abn" path="res://scenes/components/experience_vial_drop_component.tscn" id="4_6pyqk"]
+[ext_resource type="PackedScene" uid="uid://bmcbfoqw07qvt" path="res://scenes/components/health_component.tscn" id="4_k3q5s"]
+[ext_resource type="PackedScene" uid="uid://tpogedxygrrh" path="res://scenes/components/hurtbox_component.tscn" id="4_kiow1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gxg7h"]
 radius = 5.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xrbw7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_kiow1"]
 radius = 12.0
 
-[node name="BasicEnemy" type="CharacterBody2D" groups=["EnemyGroup"]]
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("_healthComponent") groups=["EnemyGroup"]]
 collision_layer = 12
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_gxg7h")
+_healthComponent = NodePath("HealthComponent")
 ExperienceVialScene = ExtResource("2_o35dm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,10 +29,14 @@ texture = ExtResource("1_fng3e")
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_gxg7h")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("4_kiow1")]
+HealthComponent = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0, -5)
-shape = SubResource("CircleShape2D_xrbw7")
+shape = SubResource("CircleShape2D_kiow1")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_k3q5s")]
+
+[node name="ExperienceVileDropComponent" parent="." node_paths=PackedStringArray("_healthComponent") instance=ExtResource("4_6pyqk")]
+_healthComponent = NodePath("../HealthComponent")

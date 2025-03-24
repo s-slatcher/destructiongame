@@ -21,6 +21,6 @@ public partial class Main : Node2D
 	}
 	private void _on_button_pressed()
 	{
-		GD.Print("Button pressed");
+		
 	}
 }
