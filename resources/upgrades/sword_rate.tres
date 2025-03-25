@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://vohvuxq5exbs"]
+
+[ext_resource type="Script" uid="uid://mm8vaoil3iks" path="res://resources/upgrades/AbilityUpgrade.cs" id="1_pyxp1"]
+
+[resource]
+script = ExtResource("1_pyxp1")
+Id = "sword_rate"
+Name = "Sword Speed Up"
+Description = "Increase the rate of your sword swings"
+Stackable = true

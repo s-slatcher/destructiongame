@@ -26,11 +26,10 @@ public partial class EnemyManager : Node
 
 		var enemyInstance = BasicEnemyScene.Instantiate() as BasicEnemy;
 		enemyInstance.Position = spawnPos;
-		GetParent().AddChild(enemyInstance);
+
+
+		GetTree().GetFirstNodeInGroup("EntitiesLayer").AddChild(enemyInstance);
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-	{
-	}
+	
 }

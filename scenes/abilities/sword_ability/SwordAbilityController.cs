@@ -12,24 +12,43 @@ public partial class SwordAbilityController : Node
 {
 	[Export] PackedScene swordAbility;  // hard code UID?
 	
-	public double damage = 5;
-
-	[Export]public float MaxRange = 125f;
+	public double Damage = 10;
 	
-	// Called when the node enters the scene tree for the first time.
+	public double BaseWaitTime = 1.5; 
+	private double currentWaitTime; 
+	
+	public float MaxRange = 125f;
+	
 	public override void _Ready()
 	{
+		// subscribe to ability events
+		GameEvents.Instance.UpgradeAdded += OnUpgradeAdded;
+
+		// set default fields
+		currentWaitTime = BaseWaitTime;
+
+
 		
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
 
-	public void OnTimerTimeout()
+
+
+	// react to ability upgrades relevant to sword	 
+    private void OnUpgradeAdded(object sender, UpgradeAddedEventArgs e)
+    {
+		if (e.UpgradeSelected.Id != "sword_rate") return;
+
+		var abilityLevel = e.UpgradeSelected.EffectMultiplier;
+		// sword rate level = +10% speed up (this function has to know those specifics, for now)
+		currentWaitTime = BaseWaitTime / ( 1 + (abilityLevel * 0.5));
+
+    }
+
+
+    public void OnTimerTimeout()
 	{
-		GetNode<Timer>("Timer").Start(1.5f);
+		GetNode<Timer>("Timer").Start(currentWaitTime);
 		
 		var player = GetTree().GetNodesInGroup("PlayerGroup")[0] as Player;
 		
@@ -51,7 +70,7 @@ public partial class SwordAbilityController : Node
 
 		// AddChild must be run first for components to connect -- 
 		// find way to avoid this? an interface with .getHurtbox? 
-		sword.HitboxComponent.damage = damage;
+		sword.HitboxComponent.Damage = Damage;
 		sword.TargetEnemy = inRangeList[0];		
 		
 		

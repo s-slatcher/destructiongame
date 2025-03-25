@@ -19,10 +19,11 @@ public partial class ExperienceVialDropComponent : Node
     private void OnDied()
     {
         var spawnPosition = GetOwner<Node2D>().GlobalPosition;
-        var vileInstance = _experienceVial.Instantiate() as ExperienceVial;
-        vileInstance.GlobalPosition = spawnPosition;
+        var vialInstance = _experienceVial.Instantiate() as ExperienceVial;
+        vialInstance.GlobalPosition = spawnPosition;
         
-        Owner.GetParent().CallDeferred("add_child", vileInstance);
+        GetTree().GetFirstNodeInGroup("EntitiesLayer").
+            CallDeferred(Node2D.MethodName.AddChild, vialInstance);
 
     }
 }

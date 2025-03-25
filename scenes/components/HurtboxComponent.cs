@@ -16,7 +16,7 @@ public partial class HurtboxComponent : Area2D
         if (area is not HitboxComponent) return;
         
         var hitbox = (HitboxComponent)area;
-        this.HealthComponent?.TakeDamage(hitbox.damage);
+        this.HealthComponent?.TakeDamage(hitbox.Damage);
 
     }
 

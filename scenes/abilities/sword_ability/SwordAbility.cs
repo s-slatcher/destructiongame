@@ -10,7 +10,7 @@ public partial class SwordAbility : Node2D
 	public HitboxComponent HitboxComponent;
  	
 	public Node2D TargetEnemy;
-	public Vector2 TargetPosition = new Vector2(0, 0);
+	public Vector2 TargetPosition = new(0, 0);
 	public Vector2 OffsetDirection;
 	private double maxOffset = 25;
 	private double currentOffset = 25;
@@ -27,7 +27,6 @@ public partial class SwordAbility : Node2D
 		animationPlayer.Play("swing");
 		animationPlayer.AnimationFinished += str => QueueFree();
 		
-
 	}
 
     public override void _PhysicsProcess(double delta)

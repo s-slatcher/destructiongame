@@ -6,10 +6,11 @@ public partial class ExperienceManager : Node
 {
 
     public Action< double, double> ExperienceUpdated;
+    public Action<int> LeveledUp;
 
     public double CurrentExperience = 0;
-    public double CurrentLevel = 1;
-    public double TargetExperience = 5;
+    public int CurrentLevel = 1;
+    public double TargetExperience = 2;
 
     public double ExperienceTargetGrowth = 1.5;
 
@@ -27,6 +28,7 @@ public partial class ExperienceManager : Node
             TargetExperience *= ExperienceTargetGrowth;
             CurrentLevel += 1;
             CurrentExperience = 0;
+            LeveledUp?.Invoke(CurrentLevel);
         }
         ExperienceUpdated?.Invoke(CurrentExperience, TargetExperience);
 
